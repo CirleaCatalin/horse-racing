@@ -1,0 +1,389 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   custom.css — things Tailwind utilities cannot express:
+   keyframes, Vue transitions, complex backgrounds, scrollbar styles, podium
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Keyframes ── */
+@keyframes horse-run {
+  0% {
+    background-position-x: 0%;
+  }
+  20% {
+    background-position-x: 25%;
+  }
+  40% {
+    background-position-x: 50%;
+  }
+  60% {
+    background-position-x: 75%;
+  }
+  80%,
+  100% {
+    background-position-x: 100%;
+  }
+}
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes place-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+}
+
+@keyframes place-fade-in-podium {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+}
+
+/* ── Vue Transitions ── */
+
+/* expand (RaceCard) */
+.expand-enter-active {
+  transition:
+    opacity 0.18s ease,
+    max-height 0.25s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+.expand-enter-to {
+  max-height: 600px;
+  opacity: 1;
+}
+.expand-leave-active {
+  transition:
+    opacity 0.12s ease,
+    max-height 0.18s ease;
+  max-height: 600px;
+  overflow: hidden;
+}
+.expand-leave-to {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* slide (HorsePanel list ↔ detail) */
+.slide-enter-active,
+.slide-leave-active {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(16px);
+}
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+/* panel-slide (App mobile overlay) */
+.panel-slide-enter-active {
+  transition:
+    transform 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    opacity 0.18s ease;
+}
+.panel-slide-leave-active {
+  transition:
+    transform 0.12s ease,
+    opacity 0.18s ease;
+}
+.panel-slide-enter-from,
+.panel-slide-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* panel-fade (App mobile overlay inner) */
+.panel-fade-enter-active,
+.panel-fade-leave-active {
+  transition: opacity 0.12s ease;
+}
+.panel-fade-enter-from,
+.panel-fade-leave-to {
+  opacity: 0;
+}
+
+/* fade (SchedulePanel tabs) */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.12s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* countdown-fade (RaceTrack) */
+.countdown-fade-enter-active {
+  transition: opacity 0.25s ease;
+}
+.countdown-fade-leave-active {
+  transition: opacity 0.35s ease;
+}
+.countdown-fade-enter-from,
+.countdown-fade-leave-to {
+  opacity: 0;
+}
+
+/* count-pop (RaceTrack countdown numbers) */
+.count-pop-enter-active {
+  transition:
+    opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.count-pop-leave-active {
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+.count-pop-enter-from {
+  opacity: 0;
+  transform: scale(1.9);
+}
+.count-pop-leave-to {
+  opacity: 0;
+  transform: scale(0.25);
+}
+
+/* overlay-fade (RaceTrack overlays) */
+.overlay-fade-enter-active {
+  transition: opacity 0.25s ease;
+}
+.overlay-fade-leave-active {
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.overlay-fade-enter-from,
+.overlay-fade-leave-to {
+  opacity: 0;
+}
+
+/* ── Finish line background ── */
+.finish-line-bg {
+  background: repeating-conic-gradient(
+      rgba(255, 255, 255, 0.95) 0deg 90deg,
+      rgba(10, 10, 10, 0.9) 90deg 180deg
+    )
+    0 0 / 10px 10px;
+  box-shadow:
+    -6px 0 22px rgba(255, 255, 255, 0.25),
+    -1px 0 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ── Lane runway grid background ── */
+/* Grid spacing is controlled by background-size set inline (distance-based) */
+.lane-runway-bg {
+  background-image: linear-gradient(
+    90deg,
+    transparent calc(100% - 1px),
+    var(--color-text-ghost) calc(100% - 1px)
+  );
+  background-repeat: repeat-x;
+}
+
+/* ── Custom scrollbar ── */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent-muted) transparent;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-accent-muted);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Button gradients ── */
+.btn-gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--color-btn-from) 0%,
+    var(--color-accent) 50%,
+    var(--color-btn-to) 100%
+  );
+}
+.btn-gradient-primary:not(:disabled):hover {
+  filter: brightness(1.1);
+  box-shadow: 0 4px 18px var(--color-accent-heavy);
+}
+
+.btn-gradient-newsletter {
+  background: linear-gradient(
+    135deg,
+    var(--color-btn-from) 0%,
+    var(--color-accent) 60%,
+    var(--color-btn-to) 100%
+  );
+}
+
+/* ── Lane winner highlights ── */
+.lane-gold,
+.lane-gold.even {
+  background: linear-gradient(
+    to left,
+    var(--color-gold-glow) 0%,
+    var(--color-gold-mid) 45%,
+    transparent 80%
+  );
+  border-bottom-color: var(--color-gold-glow);
+  box-shadow: inset -4px 0 24px var(--color-gold-shadow);
+}
+
+.lane-silver,
+.lane-silver.even {
+  background: linear-gradient(
+    to left,
+    var(--color-silver-glow) 0%,
+    var(--color-silver-mid) 45%,
+    transparent 80%
+  );
+  border-bottom-color: rgba(200, 210, 220, 0.5);
+  box-shadow: inset -4px 0 24px var(--color-silver-shadow);
+}
+
+.lane-bronze,
+.lane-bronze.even {
+  background: linear-gradient(
+    to left,
+    var(--color-bronze-glow) 0%,
+    var(--color-bronze-mid) 45%,
+    transparent 80%
+  );
+  border-bottom-color: rgba(210, 130, 55, 0.52);
+  box-shadow: inset -4px 0 24px var(--color-bronze-shadow);
+}
+
+/* ── Lane place watermark fade-in ── */
+.lane-place-anim {
+  animation: place-fade-in 0.6s ease forwards;
+}
+
+/* Podium places stand out more */
+.lane-gold .lane-place-anim,
+.lane-silver .lane-place-anim,
+.lane-bronze .lane-place-anim {
+  animation: place-fade-in-podium 0.6s ease forwards;
+}
+
+/* Podium lane place colors */
+.lane-gold .lane-place-anim {
+  color: var(--color-gold-light);
+  filter: drop-shadow(0 0 6px rgba(255, 210, 0, 0.7));
+}
+.lane-silver .lane-place-anim {
+  color: var(--color-silver-light);
+  filter: drop-shadow(0 0 6px rgba(200, 220, 235, 0.6));
+}
+.lane-bronze .lane-place-anim {
+  color: var(--color-bronze-light);
+  filter: drop-shadow(0 0 6px rgba(220, 140, 70, 0.6));
+}
+
+/* ── Between-races podium rows ── */
+.place-1 {
+  background: var(--color-gold-tint);
+  border-color: var(--color-gold-border);
+}
+.place-2 {
+  background: var(--color-silver-tint);
+  border-color: var(--color-silver-border);
+}
+.place-3 {
+  background: var(--color-bronze-tint);
+  border-color: var(--color-bronze-border);
+}
+.place-1 .podium-pos {
+  color: var(--color-gold);
+}
+.place-2 .podium-pos {
+  color: var(--color-silver);
+}
+.place-3 .podium-pos {
+  color: var(--color-bronze);
+}
+
+/* ── Results tab podium highlights ── */
+.podium-1 {
+  background: var(--color-gold-tint);
+  border-left: 2px solid var(--color-gold-border);
+}
+.podium-1 .entry-pos,
+.podium-1 .entry-name {
+  color: var(--color-gold);
+}
+.podium-1 .entry-name {
+  font-weight: 800;
+}
+
+.podium-2 {
+  background: var(--color-silver-tint);
+  border-left: 2px solid var(--color-silver-border);
+}
+.podium-2 .entry-pos,
+.podium-2 .entry-name {
+  color: var(--color-silver);
+}
+.podium-2 .entry-name {
+  font-weight: 800;
+}
+
+.podium-3 {
+  background: var(--color-bronze-tint);
+  border-left: 2px solid var(--color-bronze-border);
+}
+.podium-3 .entry-pos,
+.podium-3 .entry-name {
+  color: var(--color-bronze);
+}
+.podium-3 .entry-name {
+  font-weight: 800;
+}

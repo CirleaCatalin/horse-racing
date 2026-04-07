@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+@import './custom.css';
+
+@theme {
+  /* ── Brand ── */
+  --color-accent: #34b670;
+  --color-bg: #0d1131;
+  --color-accent-subtle: rgba(52, 182, 112, 0.03);
+  --color-accent-glass: rgba(52, 182, 112, 0.08);
+  --color-accent-tint: rgba(52, 182, 112, 0.12);
+  --color-accent-muted: rgba(52, 182, 112, 0.25);
+  --color-accent-border: rgba(52, 182, 112, 0.3);
+  --color-accent-strong: rgba(52, 182, 112, 0.4);
+  --color-accent-heavy: rgba(52, 182, 112, 0.55);
+  --color-accent-glow: rgba(52, 182, 112, 0.9);
+
+  /* ── Medals / Podium ── */
+  --color-gold: #ffc300;
+  --color-gold-light: #ffe566;
+  --color-gold-glow: rgba(255, 200, 0, 0.55);
+  --color-gold-mid: rgba(255, 200, 0, 0.18);
+  --color-gold-shadow: rgba(255, 200, 0, 0.2);
+  --color-gold-tint: rgba(255, 195, 0, 0.1);
+  --color-gold-border: rgba(255, 195, 0, 0.28);
+
+  --color-silver: #c0c0c0;
+  --color-silver-light: #dce8f0;
+  --color-silver-glow: rgba(200, 210, 220, 0.45);
+  --color-silver-mid: rgba(200, 210, 220, 0.14);
+  --color-silver-shadow: rgba(200, 210, 220, 0.16);
+  --color-silver-tint: rgba(192, 192, 192, 0.09);
+  --color-silver-border: rgba(192, 192, 192, 0.25);
+
+  --color-bronze: #b06e3c;
+  --color-bronze-light: #e8a468;
+  --color-bronze-glow: rgba(210, 130, 55, 0.5);
+  --color-bronze-mid: rgba(210, 130, 55, 0.15);
+  --color-bronze-shadow: rgba(210, 130, 55, 0.18);
+  --color-bronze-tint: rgba(176, 110, 60, 0.1);
+  --color-bronze-border: rgba(176, 110, 60, 0.28);
+
+  /* ── Track ── */
+  --color-track: #3d6e28;
+
+  /* ── Surface / Overlay ── */
+  --color-surface: rgba(255, 255, 255, 0.04);
+  --color-surface-rim: rgba(255, 255, 255, 0.08);
+  --color-black-xs: rgba(0, 0, 0, 0.04);
+  --color-black-sm: rgba(0, 0, 0, 0.11);
+  --color-black-md: rgba(0, 0, 0, 0.28);
+  --color-black-lg: rgba(0, 0, 0, 0.3);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-overlay-heavy: rgba(0, 0, 0, 0.78);
+
+  /* ── Semantic UI ── */
+  --color-heart: #ef4136;
+  --color-btn-from: #1fa75c;
+  --color-btn-to: #3ee08a;
+  --color-nav-bg: rgba(13, 17, 49, 0.98);
+
+  /* ── White text scale ── */
+  --color-text-primary: rgba(255, 255, 255, 0.92);
+  --color-text-bright: rgba(255, 255, 255, 0.88);
+  --color-text-normal: rgba(255, 255, 255, 0.7);
+  --color-text-secondary: rgba(255, 255, 255, 0.55);
+  --color-text-quiet: rgba(255, 255, 255, 0.45);
+  --color-text-muted: rgba(255, 255, 255, 0.35);
+  --color-text-soft: rgba(255, 255, 255, 0.3);
+  --color-text-faint: rgba(255, 255, 255, 0.25);
+  --color-text-dim: rgba(255, 255, 255, 0.18);
+  --color-text-ghost: rgba(255, 255, 255, 0.06);
+
+  /* ── Typography ── */
+  --font-ui: Arial, sans-serif;
+  --font-mono: monospace;
+
+  /* ── Layout ── */
+  --spacing-panel-w: 210px;
+  --spacing-header-h: 56px;
+
+  /* ── Radii ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-pill: 20px;
+
+  /* ── Z-index ── */
+  --z-base: 1;
+  --z-landmark: 10;
+  --z-overlay: 20;
+  --z-modal: 25;
+  --z-panel: 100;
+  --z-nav: 200;
+
+  /* ── Animations ── */
+  --animate-horse-run: horse-run 0.6s step-end infinite;
+  --animate-skeleton-pulse: skeleton-pulse 1.2s ease-in-out infinite;
+  --animate-live-pulse: live-pulse 1.2s ease-in-out infinite;
+  --animate-pulse-hint: pulse 1.8s ease-in-out infinite;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #app {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    border: none;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
